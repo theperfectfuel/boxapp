@@ -16,7 +16,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MAIN_DIR = os.path.dirname(os.path.dirname(__file__))
 
-ON_HEROKU = os.environ.get('ON_HEROKU')
+
+ON_HEROKU = 'DYNO' in os.environ
 
 
 # Quick-start development settings - unsuitable for production
