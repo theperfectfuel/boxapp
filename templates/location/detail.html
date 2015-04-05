@@ -7,6 +7,9 @@
 				<h3>{{ location.title }}</h3>
 				{% if location.address %}<p><b>Location: </b>{{ location.address }}</b></p>{% endif %}
 				{% if location.hours %}<p>{{ location.hours }}</p>{% endif %}
+				{% if location.image_file %}
+					<img src="{{ location.image_file.url }}"></img>
+				{% endif %}
 				<p>{{ location.description }}</p>
 			</div>
 		</div>
