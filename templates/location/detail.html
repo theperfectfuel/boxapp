@@ -60,17 +60,29 @@
 
 			<div class="row">
 				<div class="col-md-6"></div>
+
 				<div class="col-md-3">
+					{% if user.is_authenticated %}
 					<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-primary pull-right">Edit Location</a>
+					{% endif %}
 				</div>
-				{% if user_review %}
+
+
+
+				{% if user.is_authenticated and user_review %}
 				<div class="col-md-3">
 					<a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-primary pull-right">Update Review</a>
 				</div>
-				{% else %}
+				{% elif user.is_authenticated %}
 				<div class="col-md-3">
 					<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-primary pull-right">Create Review</a>
 				</div>
+				{% else %}
+				<div class="col-md-3">
+					<a type="button" href="/entrance/" class="btn btn-primary pull-right">Log In To Create Review</a>
+				</div>
+
+
 			</div>
 
 			{% endif %}
