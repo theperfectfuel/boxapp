@@ -1,20 +1,48 @@
 {% extends "base/theme.html" %}
+{% load bootstrap_pagination %}
+
 {% block main_content %}
+<div class="data-layer">
+	<ul>
+	{% for location in object_list %}
+		<li class="location-data" data-latitude="{{ location.position.latitude }}" 
+		data-longitude="{{ location.position.longitude }}" data-id="{{ location.id }}">
+		{{ location.title }}
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
+<div id="map"></div>
+
 <div class="row main-content">
 	<div class="col-md-2"></div>
 		<div class="col-md-8">
 			{% for location in object_list %}
 				<div class='panel'>
-				<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
+					<div class="row">
+						<div class="col-md-6">
+							<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
+						</div>
+						<div class="col-md-6">
+							<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
+						</div>
+					</div>
 				{% if location.address %}<p><b>Location: </b>{{ location.address }}</b></p>{% endif %}
-				{% if location.hours %}<p>{{ location.hours }}</p>{% endif %}
+				{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
 				{% if location.image_file %}
-					<img src="{{ location.image_file.url }}"></img>
+					<img class="img-responsive" src="{{ location.image_file.url }}"></img>
 				{% endif %}
 				<p>{{ location.description }}</p>
+				<p>{% include 'location/specifics.html' with location=location %}</p>
 				</div>
 			{% endfor %}
 		</div>
 	<div class="col-md-2"></div>
 </div>
+
+{% endblock %}
+
+{% block pagination %}
+	{% bootstrap_paginate page_obj range=2 show_prev_next="false" show_first_last="true" %}
 {% endblock %}
