@@ -13,7 +13,7 @@
 	</ul>
 </div>
 
-<div id="map"></div>
+<div id="map" class="wide-map"></div>
 
 <div class="row main-content">
 	<div class="col-md-2"></div>
@@ -44,5 +44,5 @@
 {% endblock %}
 
 {% block pagination %}
-	{% bootstrap_paginate page_obj range=2 show_prev_next="false" show_first_last="true" %}
+	{% bootstrap_paginate page_obj range=5 show_prev_next="false" show_first_last="true" %}
 {% endblock %}

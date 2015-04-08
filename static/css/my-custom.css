@@ -7,7 +7,16 @@
 }
 
 #map {
-	height: 400px;
+
+}
+
+.short-map{
+    height:375px;
+}
+
+.wide-map{
+    height:350px;
+    margin-top: 50px;
 }
 
 .navbar-default {
