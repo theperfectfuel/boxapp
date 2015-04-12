@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load analytics %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -267,6 +268,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static "js/agency.js" %}"></script>
+
+    {% analytics "UA-61755553-1" %}
 
 </body>
 
