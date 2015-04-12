@@ -16,7 +16,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MAIN_DIR = os.path.dirname(os.path.dirname(__file__))
 
-GOOGLE_ANALYTICS_TRACK_PAGE_LOAD_TIME = True
+ON_HEROKU = 'DYNO' in os.environ
+
+# GOOGLE_ANALYTICS_TRACK_PAGE_LOAD_TIME = True
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,7 +60,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'geoposition',
     'bootstrap_pagination',
-    'google-analytics',
+#    'google-analytics',
 )
 
 MIDDLEWARE_CLASSES = (
