@@ -60,7 +60,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'geoposition',
     'bootstrap_pagination',
-#    'google-analytics',
+ #   'google-analytics',
 )
 
 MIDDLEWARE_CLASSES = (

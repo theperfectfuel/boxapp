@@ -62,7 +62,7 @@
 				<div class="col-md-6"></div>
 
 				<div class="col-md-3">
-					{% if user.is_authenticated %}
+					{% if user.is_authenticated and user.is_superuser %}
 					<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-primary pull-right">Edit Location</a>
 					{% endif %}
 				</div>

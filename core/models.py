@@ -46,6 +46,15 @@ class Location(models.Model):
 	drop_ins = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
 	lifting_platforms = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
 	crossfit_kids = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	womens_only = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	corporate_training = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_youth = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_nutrition = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_senior = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_weightmgmt = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_injuryrec = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_sporttrain = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
+	spec_oly = models.IntegerField(choices=YESNO_CHOICES, null=True, blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):

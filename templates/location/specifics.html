@@ -1,13 +1,26 @@
 <div class="row">
 	<div class="col-md-4">
-	 
+	 	<h3>Features</h3>
 		<p><b>Showers: </b>{% if location.showers %}{{ location.get_showers_display }}{% else %}----{% endif %}</p>
 		<p><b>Kid's Area: </b>{% if location.kids_area %}{{ location.get_kids_area_display }}{% else %}----{% endif %}</p>
 		<p><b>Drop Ins: </b>{% if location.drop_ins %}{{ location.get_drop_ins_display }}{% else %}----{% endif %}</p>
 		<p><b>Lifting Platforms: </b>{% if location.lifting_platforms %}{{ location.get_lifting_platforms_display }}{% else %}----{% endif %}</p>
 		<p><b>CrossFit Kids: </b>{% if location.crossfit_kids %}{{ location.get_crossfit_kids_display }}{% else %}----{% endif %}</p>
+		<p><b>Women's Only Classes: </b>{% if location.womens_only %}{{ location.get_womens_only_display }}{% else %}----{% endif %}</p>
+		<p><b>Corporate Training: </b>{% if location.corporate_training %}{{ location.get_corporate_training_display }}{% else %}----{% endif %}</p>
 	</div>
 	<div class="col-md-4">
+		<h3>Specialties</h3>
+		<p><b>Youth Fitness: </b>{% if location.spec_youth %}{{ location.get_spec_youth_display }}{% else %}----{% endif %}</p>
+		<p><b>Senior Fitness: </b>{% if location.spec_senior %}{{ location.get_spec_senior_display }}{% else %}----{% endif %}</p>
+		<p><b>Nutrition: </b>{% if location.spec_nutrition %}{{ location.get_spec_nutrition_display }}{% else %}----{% endif %}</p>
+		<p><b>Weight Management: </b>{% if location.spec_weightmgmt %}{{ location.get_spec_weightmgmt_display }}{% else %}----{% endif %}</p>
+		<p><b>Injury Recovery: </b>{% if location.spec_injuryrec %}{{ location.get_spec_injuryrec_display }}{% else %}----{% endif %}</p>
+		<p><b>Sport Specific Training: </b>{% if location.spec_sporttrain %}{{ location.get_spec_sporttrain_display }}{% else %}----{% endif %}</p>
+		<p><b>Olympic Style Weightlifting: </b>{% if location.spec_oly %}{{ location.get_spec_oly_display }}{% else %}----{% endif %}</p>
+	</div>
+	<div class="col-md-4">
+		<h3>Ratings</h3>
 		<p><b>Parking: </b>{% if location.get_average_parking %}{% include 'base/other-ratings.html' with rating=location.get_average_parking %}{% else %}----{% endif %}</p>
 		<p><b>Friendliness: </b>{% if location.get_average_friendliness %}{% include 'base/other-ratings.html' with rating=location.get_average_friendliness %}{% else %}----{% endif %}</p>
 		<p><b>Intensity: </b>{% if location.get_average_intensity %}{% include 'base/other-ratings.html' with rating=location.get_average_intensity %}{% else %}----{% endif %}</p>
