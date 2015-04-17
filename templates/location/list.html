@@ -1,5 +1,6 @@
 {% extends "base/theme.html" %}
 {% load bootstrap_pagination %}
+{% load staticfiles%}
 
 {% block main_content %}
 <div class="data-layer">
@@ -16,29 +17,35 @@
 <div id="map" class="wide-map"></div>
 
 <div class="row main-content">
-	<div class="col-md-2"></div>
-		<div class="col-md-8">
-			{% for location in object_list %}
-				<div class='panel'>
-					<div class="row">
-						<div class="col-md-6">
-							<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
-						</div>
-						<div class="col-md-6">
-							<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
-						</div>
+
+	<div class="col-md-1"></div>
+
+	<div class="col-md-7">
+		{% for location in object_list %}
+			<div class='panel'>
+				<div class="row">
+					<div class="col-md-6">
+						<h3><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h3>
 					</div>
+					<div class="col-md-6">
+						<h3>{% include 'base/rating.html' with rating=location.get_average_rating %}</h3>
+					</div>
+				</div>
+
 				{% if location.address %}<p><b>Location: </b>{{ location.address }}</b></p>{% endif %}
 				{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
 				{% if location.image_file %}
-					<img class="img-responsive" src="{{ location.image_file.url }}"></img>
+				<img class="img-responsive" src="{{ location.image_file.url }}"></img>
 				{% endif %}
 				<p>{{ location.description }}</p>
 				<p>{% include 'location/specifics.html' with location=location %}</p>
-				</div>
-			{% endfor %}
-		</div>
-	<div class="col-md-2"></div>
+			</div>
+		{% endfor %}
+	</div>
+	<div class="sidebar-list">
+		<div class="col-md-4"><img src="{% static "img/ads/the-perfect-fuel.jpg" %}" class="sidebar-ad pull-right"></div>
+	</div>
+
 </div>
 
 {% endblock %}

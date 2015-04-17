@@ -2,6 +2,14 @@
 	margin: 100px 0 50px 0;
 }
 
+.sidebar-detail {
+    margin-top: 44px;
+}
+
+.sidebar-list {
+    margin-top: 4px;
+}
+
 .data-layer{
     display: none;
 }
@@ -12,11 +20,20 @@
 
 .short-map{
     height:375px;
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .wide-map{
     height:350px;
     margin-top: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.sidebar-ad {
+    margin-top: 20px;
 }
 
 .navbar-default {
@@ -110,6 +127,20 @@
         font-size: 1.5em;
     }
 */
+
+    .wide-map {
+        height:350px;
+        margin-top: 50px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .short-map {
+    height:375px;
+    margin-top: 0px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
 }
 
 

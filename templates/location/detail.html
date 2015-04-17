@@ -1,4 +1,5 @@
 {% extends "base/theme.html" %}
+{% load staticfiles%}
 
 {% block main_content %}
 <div class="data-layer">
@@ -13,87 +14,88 @@
 
 <div class="row main-content">
 
-	<div class="col-md-1"></div>
 
-		<div class="col-md-10">
-			<div class='panel'>
-				<div class="row">
-					<div class="col-md-8">
-						<h2><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h2>
-					</div>
-					<div class="col-md-4">
-						<h2 class="pull-right">{% include 'base/rating.html' with rating=location.get_average_rating %}</h2>
-					</div>
+
+	<div class="col-md-8">
+		<div class='panel'>
+			<div class="row">
+				<div class="col-md-8">
+					<h2><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h2>
 				</div>
-
-				<div class="row">
-					<div class="col-md-8">
-
-						{% if location.image_file %}
-							<img class="img-responsive img-centered full-width" src="{{ location.image_file.url }}"></img>
-						{% endif %}
-					</div>
-
-					<div class="col-md-4">
-						<div class="row">
-							<div id="map" class="col-md-10 short-map"></div>
-						</div>
-						<div class="row">
-							<div class="col-md-2">
-								
-							</div>
-							<div class="col-md-8 text-center" style="padding: 8px 0;">
-								{% if location.address %}<p><b></b>{{ location.address }}</b></p>{% endif %}
-								{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
-							</div>
-							<div class="col-md-2">
-								
-							</div>
-						</div>
-					</div>
-
+				<div class="col-md-4">
+					<h2 class="pull-right">{% include 'base/rating.html' with rating=location.get_average_rating %}</h2>
 				</div>
-
-				<p>{{ location.description }}</p>
-				<p>{% include 'location/specifics.html' with location=location %}</p>
 			</div>
 
 			<div class="row">
-				<div class="col-md-6"></div>
+				<div class="col-md-8">
 
-				<div class="col-md-3">
-					{% if user.is_authenticated and user.is_superuser %}
-					<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-primary pull-right">Edit Location</a>
+					{% if location.image_file %}
+						<img class="img-responsive img-centered full-width" src="{{ location.image_file.url }}"></img>
 					{% endif %}
 				</div>
 
-
-
-				{% if user.is_authenticated and user_review %}
-				<div class="col-md-3">
-					<a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-primary pull-right">Update Review</a>
+				<div class="col-md-4">
+					<div class="row">
+						<div id="map" class="col-md-12 short-map"></div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							
+						</div>
+						<div class="col-md-8 text-center" style="padding: 8px 0;">
+							{% if location.address %}<p><b></b>{{ location.address }}</b></p>{% endif %}
+							{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
+						</div>
+						<div class="col-md-2">
+							
+						</div>
+					</div>
 				</div>
-				{% elif user.is_authenticated %}
-				<div class="col-md-3">
-					<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-primary pull-right">Create Review</a>
-				</div>
-				{% else %}
-				<div class="col-md-3">
-					<a type="button" href="/entrance/" class="btn btn-primary pull-right">Log In To Create Review</a>
-				</div>
-
 
 			</div>
 
-			{% endif %}
-			<div class="col-md-12" style="padding: 20px 10px; margin: 20px 0; background-color: #efefef;">
-				{% for review in location.get_reviews %}
-					{% include 'base/review.html' with location=location %}
-				{% endfor %}
-			</div>
+			<p>{{ location.description }}</p>
+			<p>{% include 'location/specifics.html' with location=location %}</p>
 		</div>
 
-	<div class="col-md-1"></div>
+		<div class="row">
+			<div class="col-md-6"></div>
+
+			<div class="col-md-3">
+				{% if user.is_authenticated and user.is_superuser %}
+				<a type="button" href="{% url 'location_update' pk=location.id %}" class="btn btn-primary pull-right">Edit Location</a>
+				{% endif %}
+			</div>
+
+
+
+			{% if user.is_authenticated and user_review %}
+			<div class="col-md-3">
+				<a type="button" href="{% url 'review_update' pk=location.id %}" class="btn btn-primary pull-right">Update Review</a>
+			</div>
+			{% elif user.is_authenticated %}
+			<div class="col-md-3">
+				<a type="button" href="{% url 'review_create' pk=location.id %}" class="btn btn-primary pull-right">Create Review</a>
+			</div>
+			{% else %}
+			<div class="col-md-3">
+				<a type="button" href="/entrance/" class="btn btn-primary pull-right">Log In To Create Review</a>
+			</div>
+
+
+		</div>
+
+		{% endif %}
+		<div class="col-md-12" style="padding: 20px 10px; margin: 20px 0; background-color: #efefef;">
+			{% for review in location.get_reviews %}
+				{% include 'base/review.html' with location=location %}
+			{% endfor %}
+		</div>
+	</div>
+	<div class="sidebar-detail">
+		<div class="col-md-4"><img src="{% static "img/ads/the-perfect-fuel.jpg" %}" class="sidebar-ad pull-right"></div>
+	</dvi>
 
 </div>
 {% endblock %}
