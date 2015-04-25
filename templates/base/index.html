@@ -69,9 +69,15 @@
                     <li>
                         <a class="page-scroll" href="#contact">Feature Your Gym</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li>
-                        <a class="page-scroll" href="/entrance/">Sign In</a>
+                        <a class="page-scroll" href="/accounts/logout/">Log Out</a>
+                    </li> 
+                    {% else %}
+                    <li>
+                        <a class="page-scroll" href="{% url 'registration_register' %}">Sign Up</a>
                     </li>
+                    {% endif %}
                     {% endblock %}
                 </ul>
                 {% block search %}

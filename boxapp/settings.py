@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.mail import send_mail
+#from postmark import PMMail
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MAIN_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -60,6 +62,9 @@ INSTALLED_APPS = (
     'bootstrap3',
     'geoposition',
     'bootstrap_pagination',
+    'registration',
+    'postmark',
+    'django_ses',
  #   'google-analytics',
 )
 
@@ -152,3 +157,29 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWSSecretKey')
 AWS_ACCESS_KEY_ID = os.environ.get('AWSAccessKeyId')
 
 AWS_STORAGE_BUCKET_NAME = 'boxfinder'
+
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/location/'
+LOGIN_URL = '/accounts/login/'
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+AWS_SES_REGION_NAME = 'us-east-1'
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
+
+DEFAULT_FROM_EMAIL = 'boxmapperinfo@gmail.com'
+
+#EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'AKIAJ3UF55CXQAUQS7PQ'
+#EMAIL_HOST_PASSWORD = ' AkWFM0M9qotR/TqKvgqRoHVXAqlC3UQbsvqRI+s+FqC4 '
+#EMAIL_USE_TLS = 'True'
+
+#POSTMARK_API_KEY     = 'f68fa81c-4ec0-4788-83eb-a72a08657307'
+#POSTMARK_SENDER      = 'robert@theperfectfuel.com'
+#POSTMARK_TEST_MODE   = False
+#POSTMARK_TRACK_OPENS = True
+
+

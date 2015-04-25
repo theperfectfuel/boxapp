@@ -8,9 +8,12 @@
 	<li>
 		<a class="page-scroll" href="/location/create/">Add a Location</a>
 	</li> 
+	<li>
+		<a class="page-scroll" href="/accounts/logout/">Log Out</a>
+	</li> 
 	{% else %}
 	<li>
-		<a class="page-scroll" href="/entrance/">Sign In</a>
+		<a class="page-scroll" href="{% url 'registration_register' %}">Sign Up</a>
 	</li> 
 	{% endif %}
 {% endblock %}
