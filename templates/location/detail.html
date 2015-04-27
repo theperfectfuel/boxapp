@@ -14,50 +14,46 @@
 
 <div class="row main-content">
 
-
-
 	<div class="col-md-8">
-		<div class='panel'>
-			<div class="row">
-				<div class="col-md-8">
-					<h2><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h2>
-				</div>
-				<div class="col-md-4">
-					<h2 class="pull-right">{% include 'base/rating.html' with rating=location.get_average_rating %}</h2>
-				</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h2><a href="{{ location.get_absolute_url }}">{{ location.title }}</a></h2>
 			</div>
-
-			<div class="row">
-				<div class="col-md-8">
-
-					{% if location.image_file %}
-						<img class="img-responsive img-centered full-width" src="{{ location.image_file.url }}"></img>
-					{% endif %}
-				</div>
-
-				<div class="col-md-4">
-					<div class="row">
-						<div id="map" class="col-md-12 short-map"></div>
-					</div>
-					<div class="row">
-						<div class="col-md-2">
-							
-						</div>
-						<div class="col-md-8 text-center" style="padding: 8px 0;">
-							{% if location.address %}<p><b></b>{{ location.address }}</b></p>{% endif %}
-							{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
-						</div>
-						<div class="col-md-2">
-							
-						</div>
-					</div>
-				</div>
-
+			<div class="col-md-4">
+				<h2 class="pull-right">{% include 'base/rating.html' with rating=location.get_average_rating %}</h2>
 			</div>
-
-			<p>{{ location.description }}</p>
-			<p>{% include 'location/specifics.html' with location=location %}</p>
 		</div>
+
+		<div class="row">
+			<div class="col-md-8">
+
+				{% if location.image_file %}
+					<img class="img-responsive img-centered full-width" src="{{ location.image_file.url }}"></img>
+				{% endif %}
+			</div>
+
+			<div class="col-md-4">
+				<div class="row">
+					<div id="map" class="col-md-12 short-map"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						
+					</div>
+					<div class="col-md-8 text-center" style="padding: 8px 0;">
+						{% if location.address %}<p><b></b>{{ location.address }}</b></p>{% endif %}
+						{% if location.hours %}<p><b>Hours: </b>{{ location.hours }}</p>{% endif %}
+					</div>
+					<div class="col-md-2">
+						
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<p>{{ location.description }}</p>
+		<p>{% include 'location/specifics.html' with location=location %}</p>
 
 		<div class="row">
 			<div class="col-md-6"></div>
@@ -87,15 +83,19 @@
 		</div>
 
 		{% endif %}
-		<div class="col-md-12" style="padding: 20px 10px; margin: 20px 0; background-color: #efefef;">
-			{% for review in location.get_reviews %}
-				{% include 'base/review.html' with location=location %}
-			{% endfor %}
+		<div class="row">
+			<div class="col-md-12" style="padding: 20px 10px; margin: 20px 0; background-color: #efefef;">
+				{% for review in location.get_reviews %}
+					{% include 'base/review.html' with location=location %}
+				{% endfor %}
+			</div>
 		</div>
 	</div>
-	<div class="sidebar-detail">
-		<div class="col-md-4"><img src="{% static "img/ads/the-perfect-fuel.jpg" %}" class="sidebar-ad pull-right"></div>
-	</dvi>
+
+	<div class="sidebar-detail col-md-4 pull-right">
+		<div><img src="{% static "img/ads/the-perfect-fuel.jpg" %}" class="sidebar-ad pull-right"></div>
+	</div>
+
 
 </div>
 {% endblock %}
