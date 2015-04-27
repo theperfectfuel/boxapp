@@ -1,12 +1,16 @@
 $( document ).ready(function() {
 
 	var map = new GMaps({
-		el: '#map',
+		div: '#map',
 		lat: -12.043333,
 		lng: -77.028333,
+		minZoom: 5,
+		maxZoom: 14,
+		zoom: 12,
 	});
 
 	var locations = $(".location-data");
+
 
 	locations.each( function( key, value ) {
 	var loc_id = $(this).data('id');
@@ -21,5 +25,7 @@ $( document ).ready(function() {
 		}); 
 
 	});
+	
 	map.fitZoom();
+
 });

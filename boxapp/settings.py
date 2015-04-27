@@ -27,12 +27,8 @@ ON_HEROKU = 'DYNO' in os.environ
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')rf%ec&i$%ooq0j4(yrv6i970cwg6z6i%a4zyg0v23^#i(w+%p'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
@@ -58,14 +54,14 @@ INSTALLED_APPS = (
     'core',
     'addattr',
     'widget_tweaks',
-    'sitegate',
     'bootstrap3',
     'geoposition',
     'bootstrap_pagination',
     'registration',
-    'postmark',
     'django_ses',
- #   'google-analytics',
+#   'google-analytics',
+#   'sitegate',
+#   'postmark',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,9 +101,15 @@ WSGI_APPLICATION = 'boxapp.wsgi.application'
 
     # Parse database configuration from $DATABASE_URL
 if ON_HEROKU == True:
+
+    DEBUG = False
+
     import dj_database_url
     DATABASES = {'default': dj_database_url.config()}
 else:
+
+    DEBUG = True
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -170,16 +172,5 @@ AWS_SES_REGION_NAME = 'us-east-1'
 AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'
 
 DEFAULT_FROM_EMAIL = 'boxmapperinfo@gmail.com'
-
-#EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com'
-#EMAIL_PORT = 587
-#EMAIL_HOST_USER = 'AKIAJ3UF55CXQAUQS7PQ'
-#EMAIL_HOST_PASSWORD = ' AkWFM0M9qotR/TqKvgqRoHVXAqlC3UQbsvqRI+s+FqC4 '
-#EMAIL_USE_TLS = 'True'
-
-#POSTMARK_API_KEY     = 'f68fa81c-4ec0-4788-83eb-a72a08657307'
-#POSTMARK_SENDER      = 'robert@theperfectfuel.com'
-#POSTMARK_TEST_MODE   = False
-#POSTMARK_TRACK_OPENS = True
 
 

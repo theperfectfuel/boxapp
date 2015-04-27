@@ -4,10 +4,12 @@
 	<li>
 	    <a class="page-scroll" href="/location">Find a Box</a>
 	</li>
-	{% if user.is_authenticated %}
+	{% if user.is_authenticated and user.is_superuser %}
 	<li>
 		<a class="page-scroll" href="/location/create/">Add a Location</a>
 	</li> 
+	{% endif %}
+	{% if user.is_authenticated %}
 	<li>
 		<a class="page-scroll" href="/accounts/logout/">Log Out</a>
 	</li> 

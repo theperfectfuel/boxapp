@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models import Avg
 from geoposition.fields import GeopositionField
 
+
 import os
 import uuid
 
@@ -21,12 +22,25 @@ YESNO_CHOICES = (
 	(2, 'Yes'),
 	)
 
+GENDER_CHOICES = (
+	(1, 'Male'),
+	(2, 'Female'),
+	(3, 'Other'),
+	)
+
 def upload_to_location(instance, filename):
     blocks = filename.split('.')
     ext = blocks[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     instance.title = blocks[0]
     return os.path.join('uploads/', filename)
+
+def upload_to_profile(instance, filename):
+    blocks = filename.split('.')
+    ext = blocks[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    instance.title = blocks[0]
+    return os.path.join('profiles/', filename)
 
 # Create your models here.
 
@@ -111,3 +125,18 @@ class Review(models.Model):
 	friendliness = models.IntegerField(choices=RATING_CHOICES, null=True, blank=True)
 	intensity = models.IntegerField(choices=RATING_CHOICES, null=True, blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
+
+class UserProfile(models.Model):
+	# Links UserProfile to a User model instance.
+	user = models.OneToOneField(User)
+
+	# Additional attributes for User Profile
+	age = models.IntegerField(null=True, blank=True, verbose_name='Age')
+	gender = models.IntegerField(choices=GENDER_CHOICES, null=True, blank=True, verbose_name='Gender')
+	profile_image = models.ImageField(upload_to=upload_to_profile, null=True, blank=True, verbose_name='Profile Image')
+
+	# Override the __unicode__() method to return out something meaningful
+	def __unicode__(self):
+		return self.user
+
+
